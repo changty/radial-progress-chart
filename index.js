@@ -181,6 +181,7 @@ function RadialProgressChart(query, options) {
  */
 RadialProgressChart.prototype.update = function (data) {
   var self = this;
+  console.log("updating!", data);
 
   // parse new data
   if (data) {
