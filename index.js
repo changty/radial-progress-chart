@@ -164,12 +164,14 @@ function RadialProgressChart(query, options) {
         self.options.stroke.width / 2
         );
     })
-    .style("color", self.options.labelStartColor)
+    .style("fill", function(item) {
+        return item.fill;
+    })
     .text(function (item) {
       return item.labelStart;
     });
 
-    console.log("background", self.options.labelStartColor);
+    console.log("item color (fill)", self.options.labelStartColor);
   self.update();
 }
 
@@ -318,7 +320,6 @@ RadialProgressChart.normalizeOptions = function (options) {
     round: options.round !== undefined ? !!options.round : true,
     series: options.series || [],
     center: RadialProgressChart.normalizeCenter(options.center),
-    labelStartColor: options.labelStartColor || "#000000"
   };
 
   var defaultColorsIterator = new RadialProgressChart.ColorsIterator();
@@ -334,6 +335,7 @@ RadialProgressChart.normalizeOptions = function (options) {
       index: i,
       value: item.value,
       labelStart: item.labelStart,
+      fill: item.fill || '#00000',
       color: RadialProgressChart.normalizeColor(item.color, defaultColorsIterator)
     };
   }
