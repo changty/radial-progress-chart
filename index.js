@@ -221,6 +221,13 @@ RadialProgressChart.prototype.update = function (data) {
 
   var center = self.svg.select("text.rbc-center-text");
 
+  // text
+  self.field.select("rbc-label-start")
+      .text(function (item) {
+        console.log("field.text", item.labelStart);
+      return item.labelStart;
+    });
+
   // progress
   self.field.select("path.progress")
     .interrupt()
