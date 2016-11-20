@@ -164,11 +164,12 @@ function RadialProgressChart(query, options) {
         self.options.stroke.width / 2
         );
     })
-    .style("color", this.options.labelStartColor)
+    .style("color", self.options.labelStartColor)
     .text(function (item) {
       return item.labelStart;
     });
 
+    console.log("background", self.options.labelStartColor);
   self.update();
 }
 
