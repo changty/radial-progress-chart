@@ -42,8 +42,19 @@ function RadialProgressChart(query, options) {
   }
 
   self.progress = d3.svg.arc()
-    .startAngle(0)
+    // .startAngle(0)
+    // .endAngle(function (item) {
+    //   return item.percentage / 100 * τ;
+    // })
+
+    .startAngle(function(item) {
+      if(item.reverse) {
+        return 100;
+      }
+      return 0;
+    })
     .endAngle(function (item) {
+      console.log(item.percentage, (item.percentage/100* τ));
       return item.percentage / 100 * τ;
     })
     .innerRadius(innerRadius)
@@ -171,7 +182,6 @@ function RadialProgressChart(query, options) {
       return item.labelStart;
     });
 
-    console.log("item color (fill)", self.options.labelStartColor);
   self.update();
 }
 
