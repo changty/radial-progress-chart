@@ -158,9 +158,9 @@ function RadialProgressChart(query, options) {
     .data(series)
     .enter().append("g");
 
-  self.field.append("path").attr("class", "progress").attr("filter", "url(#" + dropshadowId +")")
-    .style("stroke-width", 5)
-    .style("stroke", "white");
+  self.field.append("path").attr("class", "progress").attr("filter", "url(#" + dropshadowId +")");
+    // .style("stroke-width", 5)
+    // .style("stroke", "white");
 
   self.field.append("path").attr("class", "bg")
     .style("fill", function (item) {
