@@ -349,6 +349,7 @@ RadialProgressChart.normalizeOptions = function (options) {
       value: item.value,
       labelStart: item.labelStart,
       fill: item.fill || '#00000',
+      reverse: item.reverse || false,
       color: RadialProgressChart.normalizeColor(item.color, defaultColorsIterator)
     };
   }
