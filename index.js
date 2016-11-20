@@ -206,7 +206,6 @@ RadialProgressChart.prototype.update = function (data) {
       } else if (typeof item === 'object') {
         this.options.series[i].value = item.value;
           if(item.labelStart) {
-            console.log("updating", item.labelStart, this.options.series[i]);
             this.options.series[i].labelStart = item.labelStart; 
           }
       }
@@ -222,6 +221,7 @@ RadialProgressChart.prototype.update = function (data) {
   var center = self.svg.select("text.rbc-center-text");
 
   // text
+  console.log("selected field", self.field.select("rbc-label-start"));
   self.field.select("rbc-label-start")
       .text(function (item) {
         console.log("field.text", item.labelStart);
