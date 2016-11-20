@@ -54,7 +54,10 @@ function RadialProgressChart(query, options) {
       return 0;
     })
     .endAngle(function (item) {
-      console.log(item.percentage, (item.percentage/100* τ));
+      console.log(item.reverse, item.percentage, (item.percentage/100* τ));
+      if(item.reverse) {
+        return 100 - (item.percentage / 100 * τ);
+      }
       return item.percentage / 100 * τ;
     })
     .innerRadius(innerRadius)
