@@ -204,6 +204,10 @@ RadialProgressChart.prototype.update = function (data) {
         this.options.series[i].value = item;
       } else if (typeof item === 'object') {
         this.options.series[i].value = item.value;
+          if(item.labelStart) {
+            console.log("updating", item.labelStart);
+            this.options.series[i].labelStart = item.labelStart; 
+          }
       }
     }
   }
