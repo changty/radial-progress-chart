@@ -317,7 +317,8 @@ RadialProgressChart.normalizeOptions = function (options) {
     max: options.max || 100,
     round: options.round !== undefined ? !!options.round : true,
     series: options.series || [],
-    center: RadialProgressChart.normalizeCenter(options.center)
+    center: RadialProgressChart.normalizeCenter(options.center),
+    labelStartcolor: options.labelStartColor || "#000000"
   };
 
   var defaultColorsIterator = new RadialProgressChart.ColorsIterator();
