@@ -164,6 +164,7 @@ function RadialProgressChart(query, options) {
         self.options.stroke.width / 2
         );
     })
+    .style("color", this.options.labelStartColor)
     .text(function (item) {
       return item.labelStart;
     });
@@ -205,9 +206,10 @@ RadialProgressChart.prototype.update = function (data) {
         this.options.series[i].value = item;
       } else if (typeof item === 'object') {
         this.options.series[i].value = item.value;
-          if(item.labelStart) {
-            this.options.series[i].labelStart = item.labelStart; 
-          }
+        // update item.labelStart value
+        if(item.labelStart) {
+          this.options.series[i].labelStart = item.labelStart; 
+        }
       }
     }
   }
@@ -220,11 +222,9 @@ RadialProgressChart.prototype.update = function (data) {
 
   var center = self.svg.select("text.rbc-center-text");
 
-  // text
-  console.log("selected field", self.field.select("text.rbc-label-start"));
+  // update labelStart on update
   self.field.select("text.rbc-label-start")
       .text(function (item) {
-        console.log("field.text", item.labelStart);
       return item.labelStart;
     });
 
