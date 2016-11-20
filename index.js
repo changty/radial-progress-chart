@@ -55,7 +55,7 @@ function RadialProgressChart(query, options) {
     })
     .endAngle(function (item) {
       if(item.reverse) {
-        console.log("end", τ - (item.percentage / 100 * τ));
+        console.log("end", item.labelStart, τ - (item.percentage / 100 * τ));
         return τ - (item.percentage / 100 * τ);
       }
       return item.percentage / 100 * τ;
