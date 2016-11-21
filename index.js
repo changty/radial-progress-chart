@@ -55,7 +55,6 @@ function RadialProgressChart(query, options) {
     })
     .endAngle(function (item) {
       if(item.reverse) {
-        console.log("end", item.labelStart, τ - (item.percentage / 100 * τ));
         return τ - (item.percentage / 100 * τ);
       }
       return item.percentage / 100 * τ;
@@ -119,7 +118,6 @@ function RadialProgressChart(query, options) {
   var gradient = defs.append("linearGradient").attr("id", gradientId); 
 
   series.forEach(function (item) {
-    console.log("linear gradient", item);
     if(item.linearGradient) {
       for(var i=0; i<item.linearGradient.stops.length; i++) {
         var stop = item.linearGradient.stops[i];
@@ -226,7 +224,6 @@ function RadialProgressChart(query, options) {
  */
 RadialProgressChart.prototype.update = function (data) {
   var self = this;
-  console.log("updating!", data);
 
   // parse new data
   if (data) {
