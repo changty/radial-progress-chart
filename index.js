@@ -114,7 +114,7 @@ function RadialProgressChart(query, options) {
   feMerge.append("feMergeNode").attr("in", "SourceGraphic");
 
   // add linear gradient to stroke
-  defs = self.svg.appned("svg:defs"); 
+  defs = self.svg.append("svg:defs"); 
   var gradientId = "gradient-" + Math.random(); 
   var gradient = defs.append("linearGradient"); 
 
