@@ -118,11 +118,13 @@ function RadialProgressChart(query, options) {
   var gradientId = "gradient-" + Math.random(); 
   var gradient = defs.append("linearGradient"); 
 
-  item.linearGradient.stops.forEach(function (item) {
-    gradient.append("stop")
-      .attr("offset", item.offset)
-      .attr("stop-color", item['stop-color'])
-      .attr("stop-opacity", item['stop-opacity']);
+  series.forEach(function (item) {
+    if(series.item.linearGradient) {
+      gradient.append("stop")
+        .attr("offset", item.offset)
+        .attr("stop-color", item['stop-color'])
+        .attr("stop-opacity", item['stop-opacity']);
+    }
   });
 
 
