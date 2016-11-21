@@ -113,6 +113,19 @@ function RadialProgressChart(query, options) {
   feMerge.append("feMergeNode").attr("in", "offsetBlur");
   feMerge.append("feMergeNode").attr("in", "SourceGraphic");
 
+  // add linear gradient to stroke
+  defs = self.svg.appned("svg:defs"); 
+  var gradientId = "gradient-" + Math.random(); 
+  var gradient = defs.append("linearGradient"); 
+
+  item.linearGradient.stops.forEach(function (item) {
+    gradient.append("stop")
+      .attr("offset", item.offset)
+      .attr("stop-color", item['stop-color'])
+      .attr("stop-opacity", item['stop-opacity']);
+  });
+
+
   // add inner text
   if (self.options.center) {
     self.svg.append("text")
@@ -158,7 +171,12 @@ function RadialProgressChart(query, options) {
     .data(series)
     .enter().append("g");
 
-  self.field.append("path").attr("class", "progress").attr("filter", "url(#" + dropshadowId +")");
+  self.field.append("path").attr("class", "progress").attr("filter", "url(#" + dropshadowId +")")
+    .attr("stroke", function(item) {
+      if(item.linearGradient) {
+        return "url(#" + gradientId + ")";
+      }
+    });
     // .style("stroke-width", 5)
     // .style("stroke", "white");
 
@@ -352,6 +370,7 @@ RadialProgressChart.normalizeOptions = function (options) {
       labelStart: item.labelStart,
       fill: item.fill || '#00000',
       reverse: item.reverse || false,
+      linearGradient: item.linearGradient || null,
       color: RadialProgressChart.normalizeColor(item.color, defaultColorsIterator)
     };
   }
