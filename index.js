@@ -120,11 +120,15 @@ function RadialProgressChart(query, options) {
 
   series.forEach(function (item) {
     console.log("linear gradient", item);
-    if(series.item.linearGradient) {
-      gradient.append("stop")
-        .attr("offset", item.offset)
-        .attr("stop-color", item['stop-color'])
-        .attr("stop-opacity", item['stop-opacity']);
+    if(item.linearGradient) {
+      for(var i=0; i<item.linearGradient.stops.length; i++) {
+        var stop = item.linearGradient.stops[i];
+        gradient.append("stop")
+          .attr("offset", stop.offset)
+          .attr("stop-color", stop['stop-color'])
+          .attr("stop-opacity", stop['stop-opacity']);
+      }
+
     }
   });
 
