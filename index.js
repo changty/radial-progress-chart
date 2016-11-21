@@ -119,6 +119,7 @@ function RadialProgressChart(query, options) {
   var gradient = defs.append("linearGradient"); 
 
   series.forEach(function (item) {
+    console.log(item);
     if(series.item.linearGradient) {
       gradient.append("stop")
         .attr("offset", item.offset)
