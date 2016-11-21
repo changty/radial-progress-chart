@@ -116,7 +116,7 @@ function RadialProgressChart(query, options) {
   // add linear gradient to stroke
   defs = self.svg.append("svg:defs"); 
   var gradientId = "gradient-" + Math.random(); 
-  var gradient = defs.append("linearGradient"); 
+  var gradient = defs.append("linearGradient").attr("id", gradientId); 
 
   series.forEach(function (item) {
     console.log("linear gradient", item);
@@ -178,7 +178,8 @@ function RadialProgressChart(query, options) {
     .data(series)
     .enter().append("g");
 
-  self.field.append("path").attr("class", "progress").attr("filter", "url(#" + dropshadowId +")")
+  self.field.append("path").attr("class", "progress")
+    .attr("filter", "url(#" + dropshadowId +")")
     .attr("stroke", function(item) {
       if(item.linearGradient) {
         return "url(#" + gradientId + ")";
@@ -316,6 +317,9 @@ RadialProgressChart.prototype.update = function (data) {
       }
     })
     .style("fill", function (item) {
+      if(item.linearGradient) {
+        return "none";
+      }
       if (item.color.solid) {
         return item.color.solid;
       }
